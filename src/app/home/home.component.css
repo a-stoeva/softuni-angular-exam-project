@@ -1,0 +1,37 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    color: #ffffffcf;
+    background-image: url('../../../public/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-container h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.home-container p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.travel-feed-button {
+    font-style: italic;
+    text-decoration: underline;
+    color: #ffffffcf;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.travel-feed-button:hover {
+    color: #2c5d8f;
+}
