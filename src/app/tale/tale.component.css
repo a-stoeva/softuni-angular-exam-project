@@ -1,0 +1,52 @@
+.tale-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #1e3a5f;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 260px;
+    text-align: left;
+    color: #ffffffcf;
+    transition: all 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid #010d10;
+}
+
+.tale-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px #19314f;
+}
+
+.tale-card .img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.tale-card .title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0.8rem;
+}
+
+.tale-card p {
+    margin: 0.3rem 0.8rem;
+    font-size: 0.95rem;
+}
+
+.tale-card span {
+    color: #ebd50c;
+}
+
+.tale-card a {
+    margin-top: auto;
+    align-self: flex-end;
+    margin: 1rem 0.8rem;
+    font-size: 0.85rem;
+    text-decoration: underline;
+    color: #ffffffcf;
+    transition: all 0.25s ease;
+}
+
+.tale-card a:hover {
+    color: #ebd50c;
+}

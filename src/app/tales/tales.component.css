@@ -1,0 +1,19 @@
+.travel-tales {
+    width: 100%;
+    padding: 3rem 2rem;
+    text-align: center;
+    background-color: #71a4b1;
+    color: #ffffffcf;
+}
+
+.travel-tales .title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.tales {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
