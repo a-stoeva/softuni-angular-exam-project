@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TravelTale } from '../types/tale';
 
 @Component({
   selector: 'app-tale',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './tale.component.css'
 })
 export class TaleComponent {
-
+  @Input() tale!: TravelTale;
 }

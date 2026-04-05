@@ -2,7 +2,12 @@
     <h2 class="title">Travel Tales</h2>
 
     <div class="tales">
-        <app-tale />
-        <app-tale />
+        @if(tales.length > 0) {
+            @for (tale of tales; track tale._id) {
+                <app-tale [tale]="tale"></app-tale>
+            }
+        } @else {
+            <p class="no-tales">There are no Travel Tales yet!</p>
+        }
     </div>
 </section>

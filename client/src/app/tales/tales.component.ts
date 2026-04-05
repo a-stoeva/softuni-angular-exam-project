@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaleComponent } from '../tale/tale.component';
 import { ApiService } from '../api.service';
+import { TravelTale } from '../types/tale';
 
 @Component({
   selector: 'app-tales',
@@ -11,13 +12,16 @@ import { ApiService } from '../api.service';
 })
 export class TalesComponent implements OnInit{
 
+  tales: TravelTale[] = [];
+
   constructor(private apiService: ApiService){}
 
   ngOnInit(): void {
-    this.apiService.getAll().subscribe(p => {
-      console.log(p);
+    this.apiService.getAll().subscribe((tale: TravelTale[]) => {
+      console.log(tale);
       
-    })
+      this.tales = tale;
+    });
   }
 
 }
