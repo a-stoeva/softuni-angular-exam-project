@@ -16,4 +16,9 @@ export class ApiService {
       const {apiUrl} = environment;
       return this.http.get<{ [key: string]: TravelTale }>(`${apiUrl}/jsonstore/travelTales`).pipe(map(res => Object.values(res)));
   }
+
+  getById(id: string): Observable<TravelTale> {
+      const {apiUrl} = environment;
+      return this.http.get<TravelTale>(`${apiUrl}/jsonstore/travelTales/${id}`);
+  }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ApiService } from '../api.service';
+import { TravelTale } from '../types/tale';
 
 @Component({
   selector: 'app-tale-details',
@@ -9,5 +11,20 @@ import { RouterLink } from '@angular/router';
   styleUrl: './tale-details.component.css'
 })
 export class TaleDetailsComponent {
+
+    tale!: TravelTale;
+
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService
+  ) {}
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.params['taleId'];
+    console.log(id);
+    this.apiService.getById(id).subscribe(t => {
+      console.log(t);
+      this.tale = t});
+  }
 
 }
