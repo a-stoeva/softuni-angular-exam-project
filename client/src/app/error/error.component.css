@@ -1,0 +1,50 @@
+.error {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #71a4b1;
+    color: #ffffffcf;
+    text-align: center;
+    padding: 2rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.error-code {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #ebd50c;
+    margin: 0;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.message {
+    font-size: 1.1rem;
+    max-width: 500px;
+}
+
+.home-btn {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #1e3a5f;
+    color: #ffffffcf;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid #010d10;
+}
+
+.home-btn:hover {
+    background-color: #ebd50c;
+    color: #1e3a5f;
+}
