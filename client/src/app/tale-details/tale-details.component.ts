@@ -23,7 +23,6 @@ export class TaleDetailsComponent {
     const id = this.route.snapshot.params['taleId'];
     console.log(id);
     this.apiService.getById(id).subscribe(t => {
-      console.log(t);
       this.tale = t});
   }
 

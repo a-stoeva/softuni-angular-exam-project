@@ -17,7 +17,7 @@ export const routes: Routes = [
     ]},
     // {path: 'tales/details', component: TaleDetailsComponent},
     {path: 'create', component: CreateComponent},
-    {path: 'edit', component: EditComponent},
+    {path: 'tales/:taleId/edit', component: EditComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: '404', component: ErrorComponent},
