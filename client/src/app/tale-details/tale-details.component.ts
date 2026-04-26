@@ -21,7 +21,7 @@ export class TaleDetailsComponent {
   ) {}
 
   get isOwner(): boolean {
-    return this.apiService.isOwner(this.tale._ownerId);
+    return this.apiService.isOwner(this.tale?._ownerId);
   }
 
   deleteTale(): void {

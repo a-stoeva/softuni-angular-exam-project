@@ -22,8 +22,8 @@
     </div>
     @if(isOwner){
         <div class="buttons">
-            <a class="edit-btn" routerLink = "/tales/{{ tale?._id }}/edit">Edit Tale</a>
-            <a class="delete-btn" (click)="deleteTale()">Delete Tale</a>
+            <button class="edit-btn" routerLink = "/tales/{{ tale?._id }}/edit">Edit Tale</button>
+            <button class="delete-btn" (click)="deleteTale()">Delete Tale</button>
         </div>
     }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaleComponent } from '../tale/tale.component';
-import { ApiService } from '../api.service';
 import { TravelTale } from '../types/tale';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-tales',
@@ -18,8 +18,6 @@ export class TalesComponent implements OnInit{
 
   ngOnInit(): void {
     this.apiService.getAll().subscribe((tale: TravelTale[]) => {
-      console.log(tale);
-      
       this.tales = tale;
     });
   }

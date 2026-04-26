@@ -1,0 +1,13 @@
+<section class="travel-tales">
+    <h2 class="title">My Travel Tales</h2>
+
+    <div class="tales">
+        @if(tales.length > 0) {
+            @for (tale of tales; track tale._id) {
+                <app-tale [tale]="tale"></app-tale>></app-tale>
+            }
+        } @else {
+            <p class="no-tales">You haven't posted any Tales yet!</p>
+        }
+    </div>
+</section>

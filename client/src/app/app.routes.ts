@@ -10,6 +10,7 @@ import { EditComponent } from './edit/edit.component';
 import { authGuard } from './guards/auth.guard';
 import { ownerGuard } from './guards/owner.guard';
 import { guestGuard } from './guards/guest.guard';
+import { MyTalesComponent } from './my-tales/my-tales.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,6 +19,7 @@ export const routes: Routes = [
         {path: '', component: TalesComponent},
         {path: ':taleId/details', component: TaleDetailsComponent}
     ]},
+    {path: 'my-tales', component: MyTalesComponent, canActivate: [authGuard]},
     // {path: 'tales/details', component: TaleDetailsComponent},
     {path: 'create', component: CreateComponent, canActivate: [authGuard]},
     {path: 'tales/:taleId/edit', component: EditComponent, canActivate: [authGuard, ownerGuard]},

@@ -8,6 +8,7 @@
             <li><a routerLink = "/tales">Tales</a></li>
             @if (isLogged){
                 <li><a routerLink = "/create">Create a Tale</a></li>
+                <li><a routerLink = "/my-tales">My Tales</a></li>
                 <li><a (click)="logout()">Logout</a></li>
             }
             @if (!isLogged){
