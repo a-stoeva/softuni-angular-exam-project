@@ -75,5 +75,13 @@ export class ApiService {
   getToken(): string | null {
     return this.getUser()?.accessToken || null;
   }
-  
+
+  isLogged(): boolean {
+    return !!this.getToken();
+  }
+
+  isOwner(ownerId: string): boolean {
+    const user = this.getUser();
+    return !!user && user._id === ownerId;
+  }
 }

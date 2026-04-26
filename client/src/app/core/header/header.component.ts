@@ -13,6 +13,10 @@ export class HeaderComponent {
 
   constructor(private apiService: ApiService, private router: Router) {}
 
+  get isLogged(): boolean {
+    return this.apiService.isLogged();
+  }
+
   logout(): void {
     this.apiService.logout().subscribe(() => {
       localStorage.removeItem('user');

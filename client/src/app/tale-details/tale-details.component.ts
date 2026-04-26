@@ -19,6 +19,10 @@ export class TaleDetailsComponent {
     private apiService: ApiService
   ) {}
 
+  get isOwner(): boolean {
+    return this.apiService.isOwner(this.tale._ownerId);
+  }
+
   ngOnInit(): void {
     const id = this.route.snapshot.params['taleId'];
     console.log(id);
