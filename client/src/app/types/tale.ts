@@ -1,5 +1,6 @@
 export interface TravelTale {
     _id: string;
+    _ownerId: string;
     img: string;
     title: string;
     country: string;
