@@ -52,6 +52,11 @@ export class ApiService {
       return this.http.put<TravelTale>(`${apiUrl}/data/travelTales/${id}`, data);
   }
 
+  deleteTale(id: string) {
+    const { apiUrl } = environment;
+    return this.http.delete(`${apiUrl}/data/travelTales/${id}`);
+  }
+
   login(data: { email: string; password: string }) {
     const { apiUrl } = environment;
     return this.http.post<User>(`${apiUrl}/users/login`, data);

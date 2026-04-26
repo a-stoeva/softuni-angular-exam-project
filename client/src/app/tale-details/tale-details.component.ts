@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../api.service';
 import { TravelTale } from '../types/tale';
 
@@ -16,11 +16,18 @@ export class TaleDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) {}
 
   get isOwner(): boolean {
     return this.apiService.isOwner(this.tale._ownerId);
+  }
+
+  deleteTale(): void {
+    this.apiService.deleteTale(this.tale._id).subscribe(() => {
+      this.router.navigate(['/tales']);
+    });
   }
 
   ngOnInit(): void {

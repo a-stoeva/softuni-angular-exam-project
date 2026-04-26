@@ -41,12 +41,13 @@ export class EditComponent implements OnInit {
     const id = this.route.snapshot.params['taleId'];
 
     this.apiService.updateTale(id, this.tale).subscribe(() => {
-      this.router.navigate([`/tales`]);
+      this.router.navigate([`/tales/${id}/details`]);
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/tales']);
+    const id = this.route.snapshot.params['taleId'];
+    this.router.navigate([`tales/${id}/details`]);
   }
 
 }
