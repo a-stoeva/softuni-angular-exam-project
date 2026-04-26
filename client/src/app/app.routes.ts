@@ -7,6 +7,9 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
+import { authGuard } from './guards/auth.guard';
+import { ownerGuard } from './guards/owner.guard';
+import { guestGuard } from './guards/guest.guard';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -16,10 +19,10 @@ export const routes: Routes = [
         {path: ':taleId/details', component: TaleDetailsComponent}
     ]},
     // {path: 'tales/details', component: TaleDetailsComponent},
-    {path: 'create', component: CreateComponent},
-    {path: 'tales/:taleId/edit', component: EditComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
+    {path: 'create', component: CreateComponent, canActivate: [authGuard]},
+    {path: 'tales/:taleId/edit', component: EditComponent, canActivate: [authGuard, ownerGuard]},
+    {path: 'login', component: LoginComponent, canActivate: [guestGuard]},
+    {path: 'register', component: RegisterComponent, canActivate: [guestGuard]},
     {path: '404', component: ErrorComponent},
     {path: '**', redirectTo: '/404'}
 ];
