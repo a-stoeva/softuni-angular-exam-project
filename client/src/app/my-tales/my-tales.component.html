@@ -4,7 +4,7 @@
     <div class="tales">
         @if(tales.length > 0) {
             @for (tale of tales; track tale._id) {
-                <app-tale [tale]="tale"></app-tale>></app-tale>
+                <app-tale [tale]="tale"></app-tale>
             }
         } @else {
             <p class="no-tales">You haven't posted any Tales yet!</p>

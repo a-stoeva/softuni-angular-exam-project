@@ -37,6 +37,9 @@
 
 .tale-info p {
     line-height: 1.6;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 .tale-info span {
@@ -50,7 +53,9 @@
     margin-left: auto;
 }
 
-.buttons a {
+.buttons button {
+    background: transparent;
+    border: none;
     text-decoration: none;
     padding: 0.6rem 1rem;
     border-radius: 8px;
@@ -65,6 +70,7 @@
 }
 
 .buttons .edit-btn:hover {
+    cursor: pointer;
     background-color: #ffffffcf;
 }
 
@@ -74,5 +80,6 @@
 }
 
 .buttons .delete-btn:hover {
+    cursor: pointer;
     background-color: #c94a4a;
 }

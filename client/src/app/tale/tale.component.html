@@ -1,9 +1,9 @@
 <div class="tale-card">
 
-    <img class="img" [src]="tale.img" [alt]="tale.title">
-    <h3 class="title">{{tale.title}}</h3>
-    <p>Country: <span>{{tale.country}}</span></p>
-    <p>City: <span>{{tale.city}}</span></p>
-    <p>Cost: <span>{{tale.cost}}</span></p>
+    <img class="img" [src]="tale.img" alt="image">
+    <h3 class="title">{{tale.title | sentenseCase | shorten:15 }}</h3>
+    <p>Country: <span>{{tale.country | sentenseCase | shorten:10}}</span></p>
+    <p>City: <span>{{tale.city | sentenseCase | shorten:10}}</span></p>
+    <p>Cost: <span>{{tale.cost | sentenseCase | shorten:10}}</span></p>
     <button routerLink="/tales/{{ tale._id }}/details">More details</button>
 </div>

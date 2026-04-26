@@ -2,17 +2,18 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../api.service';
 import { TravelTale } from '../types/tale';
+import { SentenseCasePipe } from '../pipes/sentense-case.pipe';
 
 @Component({
   selector: 'app-tale-details',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, SentenseCasePipe],
   templateUrl: './tale-details.component.html',
   styleUrl: './tale-details.component.css'
 })
 export class TaleDetailsComponent {
 
-    tale!: TravelTale;
+  tale: TravelTale | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,10 +22,12 @@ export class TaleDetailsComponent {
   ) {}
 
   get isOwner(): boolean {
-    return this.apiService.isOwner(this.tale?._ownerId);
+    if (!this.tale) return false;
+    return this.apiService.isOwner(this.tale._ownerId);
   }
 
   deleteTale(): void {
+    if (!this.tale) return;
     this.apiService.deleteTale(this.tale._id).subscribe(() => {
       this.router.navigate(['/tales']);
     });
