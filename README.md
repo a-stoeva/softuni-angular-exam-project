@@ -20,7 +20,7 @@ Angular Project - Functional Guide
         - Can like other users' tales
         - Can view a personal 'My Tales' section with only their own tales
    
-4. Public Features
+3. Public Features
 
    3.1. The following features are available to all users (including guests):
    
@@ -39,7 +39,7 @@ Angular Project - Functional Guide
         - View their own created tales in 'My Tales'
         - Logout
    
-6. Main Application Flow
+4. Main Application Flow
    - User opens the Home page.
    - User navigates to the Tales catalog.
    - User selects a travel tale and opens the Details page.
@@ -48,7 +48,7 @@ Angular Project - Functional Guide
    - Newly created tales appear in the catalog and 'My Tales'.
    - Users can like other users' posts.
 
-7. Data Structure
+5. Data Structure
 
    5.1. TravelTale Object
    
@@ -70,7 +70,7 @@ Angular Project - Functional Guide
         - taleId – ID of the liked travel tale
         - _ownerId – ID of the user who liked it
    
-9. Project Architecture
+6. Project Architecture
    - components/ – UI components (home, tales, details, create, edit, register, login, my-tales)
    - services/ – API communication (data service, auth service)
    - types/ – TypeScript interfaces (TravelTale, User, Like)
@@ -78,7 +78,7 @@ Angular Project - Functional Guide
    - pipes/ – custom pipes (pipe for shortening the sentence and pipe for transforming a sentence)
    - environments/ – API configuration
 
-10. Technologies Used
+7. Technologies Used
    - Angular
    - TypeScript
    - RxJS
@@ -88,7 +88,7 @@ Angular Project - Functional Guide
    - CSS (custom styling)
    - HTTP Interceptors
 
-11. How to run the project
+8. How to run the project
    
    8.1. Clone the repository
    
