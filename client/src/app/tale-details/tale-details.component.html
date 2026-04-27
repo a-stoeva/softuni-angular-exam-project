@@ -1,30 +1,32 @@
 <div class="details-wrapper">
 
+    @if (tale) {
     <div class="tale">
 
-    <img class="img" [src]="tale?.img" alt="image">
+    <img class="img" [src]="tale.img" alt="image">
     
     <div class="tale-info">
-        <h3 class="title">{{ tale?.title | sentenseCase }}</h3>
-        <p>Country: <span>{{ tale?.country | sentenseCase }}</span></p>
-        <p>City: <span>{{ tale?.city | sentenseCase }}</span></p>
-        <p>Cost: <span>{{ tale?.cost | sentenseCase }}</span></p>
-        <p>Time needed: <span>{{ tale?.timeNeeded | sentenseCase }}</span></p>
-        <p>Best Time to Visit: <span>{{ tale?.bestTimeToVisit | sentenseCase }}</span></p>
+        <h3 class="title">{{ tale.title | sentenseCase }}</h3>
+        <p>Country: <span>{{ tale.country | sentenseCase }}</span></p>
+        <p>City: <span>{{ tale.city | sentenseCase }}</span></p>
+        <p>Cost: <span>{{ tale.cost | sentenseCase }}</span></p>
+        <p>Time needed: <span>{{ tale.timeNeeded | sentenseCase }}</span></p>
+        <p>Best Time to Visit: <span>{{ tale.bestTimeToVisit | sentenseCase }}</span></p>
         <p>
-            My Experience: <span>{{ tale?.myExperiance | sentenseCase }}</span>
+            My Experience: <span>{{ tale.myExperiance | sentenseCase }}</span>
         </p>
         <p>
-            Valuable Tips: <span>{{ tale?.valuableTips | sentenseCase }}</span>
+            Valuable Tips: <span>{{ tale.valuableTips | sentenseCase }}</span>
         </p>
 
     </div>
     </div>
     @if(isOwner){
         <div class="buttons">
-            <button class="edit-btn" routerLink = "/tales/{{ tale?._id }}/edit">Edit Tale</button>
+            <button class="edit-btn" routerLink = "/tales/{{ tale._id }}/edit">Edit Tale</button>
             <button class="delete-btn" (click)="deleteTale()">Delete Tale</button>
         </div>
     }
+}
 
 </div>

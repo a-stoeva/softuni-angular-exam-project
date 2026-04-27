@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.development';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TravelTale } from './types/tale';
 import { User } from './types/user';
 
@@ -52,17 +52,17 @@ export class ApiService {
       return this.http.put<TravelTale>(`${apiUrl}/data/travelTales/${id}`, data);
   }
 
-  deleteTale(id: string) {
+  deleteTale(id: string): Observable<void> {
     const { apiUrl } = environment;
-    return this.http.delete(`${apiUrl}/data/travelTales/${id}`);
+    return this.http.delete<void>(`${apiUrl}/data/travelTales/${id}`);
   }
 
-  login(data: { email: string; password: string }) {
+  login(data: { email: string; password: string }): Observable<User> {
     const { apiUrl } = environment;
     return this.http.post<User>(`${apiUrl}/users/login`, data);
   }
 
-  register(data: { email: string; password: string }) {
+  register(data: { email: string; password: string }): Observable<User> {
     const { apiUrl } = environment;
     return this.http.post<User>(`${apiUrl}/users/register`, data);
   }

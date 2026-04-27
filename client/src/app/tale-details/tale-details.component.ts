@@ -27,17 +27,30 @@ export class TaleDetailsComponent {
   }
 
   deleteTale(): void {
+
     if (!this.tale) return;
-    this.apiService.deleteTale(this.tale._id).subscribe(() => {
-      this.router.navigate(['/tales']);
+
+    this.apiService.deleteTale(this.tale._id).subscribe({
+      next: () => {
+        this.router.navigate(['/tales']);
+      },
+      error: (err) => {
+        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+      }
     });
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['taleId'];
-    console.log(id);
-    this.apiService.getById(id).subscribe(t => {
-      this.tale = t});
+    this.apiService.getById(id).subscribe({
+      next: (t) => {
+        this.tale = t;
+      },
+      error: (err) => {
+        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+        this.router.navigate(['/tales']);
+      }
+    });
   }
 
 }

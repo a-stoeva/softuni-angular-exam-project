@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TravelTale } from '../types/tale';
 import { ApiService } from '../api.service';
 import { TaleComponent } from '../tale/tale.component';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-my-tales',
@@ -23,9 +24,14 @@ export class MyTalesComponent {
       return;
     }
 
-    this.apiService.getAll().subscribe((tale: TravelTale[]) => {
-      this.tales = tale.filter(t => t._ownerId === user._id);
-    });
+    this.apiService.getAll().pipe(
+      catchError(err => {
+        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+        return of([]);
+      })
+      ).subscribe((tale: TravelTale[]) => {
+        this.tales = tale.filter(t => t._ownerId === user._id);
+      });
   }
 
 }

@@ -20,28 +20,31 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const id = this.route.snapshot.params['taleId'];
-
-    console.log(id);
+    const id: string = this.route.snapshot.params['taleId'];
       
-    this.apiService.getById(id).subscribe(t => {
-      this.tale = t;
-      console.log(t);      
+    this.apiService.getById(id).subscribe((t: TravelTale) => {
+      this.tale = t;     
     });
   }
 
   editTale(): void {
 
-    const form = this.form!;
+    const form = this.form;
 
-    if (form.invalid) {
+    if (!form || form.invalid) {
+      alert('Invalid form')
       return;
     }
 
-    const id = this.route.snapshot.params['taleId'];
+    const id: string = this.route.snapshot.params['taleId'];
 
-    this.apiService.updateTale(id, this.tale).subscribe(() => {
-      this.router.navigate([`/tales/${id}/details`]);
+    this.apiService.updateTale(id, this.tale).subscribe({
+      next: () => {
+        this.router.navigate([`/tales/${id}/details`]);
+      },
+      error: (err) => {
+        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+      }
     });
   }
 

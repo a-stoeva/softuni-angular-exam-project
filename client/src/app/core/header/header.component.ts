@@ -18,10 +18,17 @@ export class HeaderComponent {
   }
 
   logout(): void {
-    this.apiService.logout().subscribe(() => {
+    this.apiService.logout().subscribe({
+    next: () => {
       localStorage.removeItem('user');
       this.router.navigate(['/login']);
-    });
+    },
+    error: (err) => {
+      alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+      localStorage.removeItem('user');
+      this.router.navigate(['/login']);
+    }
+  });
   }
 
 }

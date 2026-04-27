@@ -21,6 +21,7 @@ export class LoginComponent {
 
   handleLogin(): void {
     if (this.loginForm.invalid) {
+      alert('Invalid form')
       return;
     }
 
@@ -29,14 +30,19 @@ export class LoginComponent {
       password: string;
     };
 
-    this.apiService.login(data).subscribe( (user) => {
+    this.apiService.login(data).subscribe({
+      next: (user) => {
         localStorage.setItem('user', JSON.stringify({
           _id: user._id,
           email: user.email,
           accessToken: user.accessToken
         }));
+
         this.router.navigate(['/home']);
-        console.log(user);
-      })
+      },
+      error: (err) => {
+        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+      }
+    });
   }
 }

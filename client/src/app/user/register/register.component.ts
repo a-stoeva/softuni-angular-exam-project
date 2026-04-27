@@ -21,6 +21,7 @@ export class RegisterComponent {
     const registerForm = this.form;
 
     if (registerForm?.invalid) {
+      alert('Invalid form')
       return;
     }
 
@@ -30,20 +31,24 @@ export class RegisterComponent {
       return;
     }
 
-    const data = {
-      email,
-      password
-    };
+    const data = { email, password } as {email: string, password:string};
 
-    this.apiService.register(data).subscribe((user) => {
+    this.apiService.register(data).subscribe({
+      next: (user) => {
         localStorage.setItem('user', JSON.stringify({
           _id: user._id,
           email: user.email,
           accessToken: user.accessToken
         }));
+
         this.router.navigate(['/home']);
-      });
+      },
+
+      error: (err) => {
+        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+      }
+    });
     
-    }
+  }
 
 }
