@@ -20,7 +20,7 @@ export class RegisterComponent {
 
     const registerForm = this.form;
 
-    if (registerForm?.invalid) {
+    if (!registerForm || registerForm?.invalid) {
       alert('Invalid form')
       return;
     }
@@ -28,6 +28,7 @@ export class RegisterComponent {
     const { email, password, rePassword } = registerForm?.value;
 
     if (password !== rePassword) {
+      alert(`Password and repeat password don't match`)
       return;
     }
 
