@@ -17,9 +17,12 @@ export const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'tales', children: [
         {path: '', component: TalesComponent},
-        {path: ':taleId/details', component: TaleDetailsComponent}
+        {path: ':taleId/details', loadComponent: () =>
+            import('./tale-details/tale-details.component').then(t => t.TaleDetailsComponent)}
     ]},
-    {path: 'my-tales', component: MyTalesComponent, canActivate: [authGuard]},
+    {path: 'my-tales', loadComponent: () =>
+        import('./my-tales/my-tales.component').then(t => t.MyTalesComponent),
+    canActivate: [authGuard]},
     // {path: 'tales/details', component: TaleDetailsComponent},
     {path: 'create', component: CreateComponent, canActivate: [authGuard]},
     {path: 'tales/:taleId/edit', component: EditComponent, canActivate: [authGuard, ownerGuard]},
