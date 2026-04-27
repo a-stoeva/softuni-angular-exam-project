@@ -30,7 +30,7 @@ export class CreateComponent {
         this.router.navigate(['/tales']);
       },
       error: (err) => {
-        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+        alert(`Error status ${err.status}: ${err.error?.message || 'create failed'}`);
       }
     });
   }

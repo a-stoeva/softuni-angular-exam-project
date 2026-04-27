@@ -83,3 +83,35 @@
     cursor: pointer;
     background-color: #c94a4a;
 }
+
+.like-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.like-btn {
+    background: #fff;
+    border: 2px solid #ff4d6d;
+    color: #ff4d6d;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.like-btn:hover {
+    background: #ff4d6d;
+    color: white;
+}
+
+.like-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.like-count {
+    font-weight: bold;
+}

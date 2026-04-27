@@ -43,7 +43,7 @@ export class EditComponent implements OnInit {
         this.router.navigate([`/tales/${id}/details`]);
       },
       error: (err) => {
-        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+        alert(`Error status ${err.status}: ${err.error?.message || 'Edit failed'}`);
       }
     });
   }

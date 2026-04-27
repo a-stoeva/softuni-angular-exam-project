@@ -4,6 +4,7 @@ import { environment } from '../environments/environment.development';
 import { Observable } from 'rxjs';
 import { TravelTale } from './types/tale';
 import { User } from './types/user';
+import { Like } from './types/like';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,17 @@ export class ApiService {
   deleteTale(id: string): Observable<void> {
     const { apiUrl } = environment;
     return this.http.delete<void>(`${apiUrl}/data/travelTales/${id}`);
+  }
+
+  getLikes(taleId: string): Observable<Like[]> {
+    const { apiUrl } = environment;
+    const query = encodeURIComponent(`taleId="${taleId}"`);
+    return this.http.get<Like[]>(`${apiUrl}/data/likes?where=${query}`);
+  }
+
+  likeTale(taleId: string): Observable<Like> {
+    const { apiUrl } = environment;
+    return this.http.post<Like>(`${apiUrl}/data/likes`, { taleId });
   }
 
   login(data: { email: string; password: string }): Observable<User> {

@@ -21,6 +21,29 @@
 
     </div>
     </div>
+
+    <div class="like-container">
+
+        @if (isAuthor || isGuest) {
+            <span class="like-count">
+                {{ likes }} {{ likes === 1 ? 'like' : 'likes' }}
+            </span>
+        } @else {
+            <button class="like-btn" (click)="likeHandler()" [disabled]="hasLiked">
+            @if (hasLiked) {
+                Liked ❤️
+            } @else {
+                Like ♡
+            }
+            </button>
+
+            <span class="likeCount">
+                {{ likes }} {{ likes === 1 ? 'like' : 'likes' }}
+            </span>
+        }
+
+    </div>
+
     @if(isOwner){
         <div class="buttons">
             <button class="edit-btn" routerLink = "/tales/{{ tale._id }}/edit">Edit Tale</button>

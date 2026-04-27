@@ -41,7 +41,7 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
+        alert(`Error status ${err.status}: ${err.error?.message || 'Login failed'}`);
       }
     });
   }
