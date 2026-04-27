@@ -85,10 +85,7 @@ Angular Project - Functional Guide
    - TypeScript
    - RxJS
    - REST Service - SoftUni Practice Service
-   - Angular Forms (Template-driven & Reactive Forms)
-   - Angular Pipes
    - CSS (custom styling)
-   - HTTP Interceptors
 
 8. How to run the project
    
