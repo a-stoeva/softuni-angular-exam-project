@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaleComponent } from '../tale/tale.component';
-import { TravelTale } from '../types/tale';
 import { catchError, of } from 'rxjs';
-import { DataService } from '../services/data.service';
+import { TravelTale } from '../../types/tale';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-tales',

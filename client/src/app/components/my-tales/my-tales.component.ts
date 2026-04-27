@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TravelTale } from '../types/tale';
 import { TaleComponent } from '../tale/tale.component';
 import { catchError, of } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { DataService } from '../services/data.service';
+import { TravelTale } from '../../types/tale';
+import { DataService } from '../../services/data.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-my-tales',

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { TravelTale } from '../types/tale';
-import { SentenseCasePipe } from '../pipes/sentense-case.pipe';
-import { AuthService } from '../services/auth.service';
-import { DataService } from '../services/data.service';
+import { SentenseCasePipe } from '../../pipes/sentense-case.pipe';
+import { TravelTale } from '../../types/tale';
+import { DataService } from '../../services/data.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-tale-details',

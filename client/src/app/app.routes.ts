@@ -1,16 +1,14 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { TalesComponent } from './tales/tales.component';
-import { ErrorComponent } from './error/error.component';
-import { TaleDetailsComponent } from './tale-details/tale-details.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
-import { CreateComponent } from './create/create.component';
-import { EditComponent } from './edit/edit.component';
 import { authGuard } from './guards/auth.guard';
 import { ownerGuard } from './guards/owner.guard';
 import { guestGuard } from './guards/guest.guard';
-import { MyTalesComponent } from './my-tales/my-tales.component';
+import { HomeComponent } from './components/home/home.component';
+import { TalesComponent } from './components/tales/tales.component';
+import { CreateComponent } from './components/create/create.component';
+import { EditComponent } from './components/edit/edit.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { ErrorComponent } from './components/error/error.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,10 +16,10 @@ export const routes: Routes = [
     {path: 'tales', children: [
         {path: '', component: TalesComponent},
         {path: ':taleId/details', loadComponent: () =>
-            import('./tale-details/tale-details.component').then(t => t.TaleDetailsComponent)}
+            import('./components/tale-details/tale-details.component').then(t => t.TaleDetailsComponent)}
     ]},
     {path: 'my-tales', loadComponent: () =>
-        import('./my-tales/my-tales.component').then(t => t.MyTalesComponent),
+        import('./components/my-tales/my-tales.component').then(t => t.MyTalesComponent),
     canActivate: [authGuard]},
     // {path: 'tales/details', component: TaleDetailsComponent},
     {path: 'create', component: CreateComponent, canActivate: [authGuard]},

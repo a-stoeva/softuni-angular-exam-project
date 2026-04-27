@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TravelTale } from '../types/tale';
 import { FormsModule, NgForm } from '@angular/forms';
-import { DataService } from '../services/data.service';
+import { TravelTale } from '../../types/tale';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-edit',
