@@ -45,7 +45,8 @@ Angular Project - Functional Guide
    - User selects a travel tale and opens the Details page.
    - Guest user may register or log in.
    - Authenticated user can create a new travel tale.
-   - Newly created tales appear in the catalog and 'My Tales'.
+   - User's created tales appear in the catalog and 'My Tales'.
+   - User may edit or delete their travel tale
    - Users can like other users' posts.
 
 5. Data Structure
@@ -67,8 +68,8 @@ Angular Project - Functional Guide
    5.2. Like Object
    
         - _id – like unique identifier
-        - taleId – ID of the liked travel tale
         - _ownerId – ID of the user who liked it
+        - taleId – ID of the liked travel tale
    
 6. Project Architecture
    - components/ – UI components (home, tales, details, create, edit, register, login, my-tales)
@@ -77,6 +78,7 @@ Angular Project - Functional Guide
    - guards/ – Route protection (authGuard, ownerGuard, guestGuard)
    - pipes/ – custom pipes (pipe for shortening the sentence and pipe for transforming a sentence)
    - environments/ – API configuration
+   - interceprots/ - HTTP interceptor
 
 7. Technologies Used
    - Angular
