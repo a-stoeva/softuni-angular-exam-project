@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaleComponent } from '../tale/tale.component';
 import { TravelTale } from '../types/tale';
-import { ApiService } from '../api.service';
 import { catchError, of } from 'rxjs';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tales',
@@ -15,10 +15,10 @@ export class TalesComponent implements OnInit{
 
   tales: TravelTale[] = [];
 
-  constructor(private apiService: ApiService){}
+  constructor(private dataService: DataService){}
 
   ngOnInit(): void {
-    this.apiService.getAll().pipe(
+    this.dataService.getAll().pipe(
       catchError((err) => {
         alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
         return of([]);

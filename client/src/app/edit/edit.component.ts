@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TravelTale } from '../types/tale';
 import { FormsModule, NgForm } from '@angular/forms';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-edit',
@@ -16,13 +16,13 @@ export class EditComponent implements OnInit {
   @ViewChild('editForm') form: NgForm | undefined;
   tale!: TravelTale;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
 
     const id: string = this.route.snapshot.params['taleId'];
       
-    this.apiService.getById(id).subscribe((t: TravelTale) => {
+    this.dataService.getById(id).subscribe((t: TravelTale) => {
       this.tale = t;     
     });
   }
@@ -38,7 +38,7 @@ export class EditComponent implements OnInit {
 
     const id: string = this.route.snapshot.params['taleId'];
 
-    this.apiService.updateTale(id, this.tale).subscribe({
+    this.dataService.updateTale(id, this.tale).subscribe({
       next: () => {
         this.router.navigate([`/tales/${id}/details`]);
       },

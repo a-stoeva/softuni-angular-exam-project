@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
-import { catchError, of } from 'rxjs';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-create',
@@ -14,7 +13,7 @@ import { catchError, of } from 'rxjs';
 export class CreateComponent {
   @ViewChild('createForm') form: NgForm | undefined;
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   createTale(): void {
 
@@ -25,7 +24,7 @@ export class CreateComponent {
       return;
     }
 
-    this.apiService.createTale(form.value).subscribe({
+    this.dataService.createTale(form.value).subscribe({
       next: () => {
         this.router.navigate(['/tales']);
       },

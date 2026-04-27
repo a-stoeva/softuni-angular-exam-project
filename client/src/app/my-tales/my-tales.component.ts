@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { TravelTale } from '../types/tale';
-import { ApiService } from '../api.service';
 import { TaleComponent } from '../tale/tale.component';
 import { catchError, of } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-my-tales',
@@ -15,16 +16,16 @@ export class MyTalesComponent {
 
   tales: TravelTale[] = [];
 
-  constructor(private apiService: ApiService){}
+  constructor(private dataService: DataService, private authService: AuthService){}
 
   ngOnInit(): void {
-    const user = this.apiService.getUser();
+    const user = this.authService.getUser();
 
     if (!user) {
       return;
     }
 
-    this.apiService.getAll().pipe(
+    this.dataService.getAll().pipe(
       catchError(err => {
         alert(`Error status ${err.status}: ${err.error?.message || 'Something went wrong'}`);
         return of([]);

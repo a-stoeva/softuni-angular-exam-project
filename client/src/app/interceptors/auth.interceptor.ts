@@ -1,11 +1,11 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { ApiService } from '../api.service';
+import { AuthService } from '../services/auth.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
-  const apiService = inject(ApiService);
-  const token = apiService.getToken();
+  const authService = inject(AuthService);
+  const token = authService.getToken();
 
   const isAuthRequest =
     req.url.includes('/users/login') ||

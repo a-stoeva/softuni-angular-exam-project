@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ApiService } from '../api.service';
 import { TravelTale } from '../types/tale';
 import { SentenseCasePipe } from '../pipes/sentense-case.pipe';
+import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tale-details',
@@ -22,20 +23,21 @@ export class TaleDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: ApiService,
-    private router: Router
+    private dataService: DataService,
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   get isOwner(): boolean {
     if (!this.tale) return false;
-    return this.apiService.isOwner(this.tale._ownerId);
+    return this.authService.isOwner(this.tale._ownerId);
   }
 
   deleteTale(): void {
 
     if (!this.tale) return;
 
-    this.apiService.deleteTale(this.tale._id).subscribe({
+    this.dataService.deleteTale(this.tale._id).subscribe({
       next: () => {
         this.router.navigate(['/tales']);
       },
@@ -47,7 +49,7 @@ export class TaleDetailsComponent {
 
   likeHandler(): void {
 
-    const user = this.apiService.getUser();
+    const user = this.authService.getUser();
 
     if (!user) {
       alert('Please log in to like!');
@@ -56,7 +58,7 @@ export class TaleDetailsComponent {
 
     if (this.hasLiked || this.isAuthor || !this.tale) return;
 
-    this.apiService.likeTale(this.tale._id).subscribe({
+    this.dataService.likeTale(this.tale._id).subscribe({
       next: () => {
         this.likes++;
         this.hasLiked = true;
@@ -69,7 +71,7 @@ export class TaleDetailsComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['taleId'];
-    const user = this.apiService.getUser();
+    const user = this.authService.getUser();
 
     if (!id) {
       this.router.navigate(['/tales']);
@@ -79,7 +81,7 @@ export class TaleDetailsComponent {
 
     this.isGuest = !user;
 
-    this.apiService.getById(id).subscribe({
+    this.dataService.getById(id).subscribe({
       next: (t) => {
         this.tale = t;
         this.isAuthor = !!user && this.tale?._ownerId === user?._id;
@@ -90,7 +92,7 @@ export class TaleDetailsComponent {
       }
     });
 
-    this.apiService.getLikes(id).subscribe({
+    this.dataService.getLikes(id).subscribe({
       next: (allLikes) => {
         this.likes = allLikes.length;
         if (user) {

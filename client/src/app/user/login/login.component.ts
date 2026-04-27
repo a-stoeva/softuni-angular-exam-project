@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../api.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import { ApiService } from '../../api.service';
 })
 export class LoginComponent {
 
-  constructor(private router: Router, private apiService: ApiService){}
+  constructor(private router: Router, private authService: AuthService){}
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -30,7 +30,7 @@ export class LoginComponent {
       password: string;
     };
 
-    this.apiService.login(data).subscribe({
+    this.authService.login(data).subscribe({
       next: (user) => {
         localStorage.setItem('user', JSON.stringify({
           _id: user._id,

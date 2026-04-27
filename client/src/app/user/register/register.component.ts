@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../api.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +14,7 @@ export class RegisterComponent {
 
   @ViewChild('registerForm') form: NgForm | undefined;
 
-  constructor(private router: Router, private apiService: ApiService){}
+  constructor(private router: Router, private authService: AuthService){}
 
   register(): void {
 
@@ -33,7 +33,7 @@ export class RegisterComponent {
 
     const data = { email, password } as {email: string, password:string};
 
-    this.apiService.register(data).subscribe({
+    this.authService.register(data).subscribe({
       next: (user) => {
         localStorage.setItem('user', JSON.stringify({
           _id: user._id,

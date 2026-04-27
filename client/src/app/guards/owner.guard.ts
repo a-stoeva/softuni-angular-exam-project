@@ -1,17 +1,19 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { ApiService } from '../api.service';
 import { map } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
 
 export const ownerGuard: CanActivateFn = (route, state) => {
-  const apiService = inject(ApiService);
+  const authService = inject(AuthService);
+  const dataService = inject(DataService);
   const router = inject(Router);
 
   const taleId = route.params['taleId'];
 
-  return apiService.getById(taleId).pipe(
+  return dataService.getById(taleId).pipe(
     map(tale => {
-      if (apiService.isOwner(tale._ownerId)) {
+      if (authService.isOwner(tale._ownerId)) {
         return true;
       }
 
