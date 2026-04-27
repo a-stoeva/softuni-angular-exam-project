@@ -6,21 +6,24 @@ Angular Project - Functional Guide
 2. User Roles
 
    2.1. Guest (Not Authenticated User)
+   
         - Can view the home page
         - Can browse the catalog of travel tales
         - Can view details of individual tales
         - Can register or log in
 
    2.2. Authenticated User
+   
         - Can create new travel tales
         - Can edit their own tales
         - Can delete their own tales
         - Can like other users' tales
         - Can view a personal 'My Tales' section with only their own tales
    
-3. Public Features
+4. Public Features
 
    3.1. The following features are available to all users (including guests):
+   
         - Home page (landing page with introduction)
         - Catalog page displaying all travel tales
         - Details page for each travel tale
@@ -28,6 +31,7 @@ Angular Project - Functional Guide
         - Register page
 
    3.2. Authenticated User Features - After login, users can:
+   
         - Create new travel tales
         - Edit only their own travel tales
         - Delete only their own travel tales
@@ -35,7 +39,7 @@ Angular Project - Functional Guide
         - View their own created tales in 'My Tales'
         - Logout
    
-4. Main Application Flow
+6. Main Application Flow
    - User opens the Home page.
    - User navigates to the Tales catalog.
    - User selects a travel tale and opens the Details page.
@@ -44,9 +48,10 @@ Angular Project - Functional Guide
    - Newly created tales appear in the catalog and 'My Tales'.
    - Users can like other users' posts.
 
-5. Data Structure
+7. Data Structure
 
    5.1. TravelTale Object
+   
         - _id – unique identifier
         - _ownerId – ID of the user who created the tale
         - img – image URL of the destination
@@ -60,11 +65,12 @@ Angular Project - Functional Guide
         - valuableTips – travel tips and advice
 
    5.2. Like Object
+   
         - _id – like unique identifier
         - taleId – ID of the liked travel tale
         - _ownerId – ID of the user who liked it
    
-6. Project Architecture
+9. Project Architecture
    - components/ – UI components (home, tales, details, create, edit, register, login, my-tales)
    - services/ – API communication (data service, auth service)
    - types/ – TypeScript interfaces (TravelTale, User, Like)
@@ -72,7 +78,7 @@ Angular Project - Functional Guide
    - pipes/ – custom pipes (pipe for shortening the sentence and pipe for transforming a sentence)
    - environments/ – API configuration
 
-7. Technologies Used
+10. Technologies Used
    - Angular
    - TypeScript
    - RxJS
@@ -82,15 +88,17 @@ Angular Project - Functional Guide
    - CSS (custom styling)
    - HTTP Interceptors
 
-8. How to run the project
+11. How to run the project
    
    8.1. Clone the repository
    
    8.2. Install dependencies for and run client
+   
         npm install
         ng serve
    
-   8.3. Install and run backend:
+   8.3. Install and run backend
+   
         npm install
         npm run client
         npm run build
